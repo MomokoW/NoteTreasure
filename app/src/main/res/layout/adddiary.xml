@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:openDrawer="start">
+    android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/list"
+    <ImageView
+        android:id="@+id/d_img"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:visibility="gone"/>
+    <EditText
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="top"
+        android:id="@+id/ettext"
+        android:hint="有了心情日记，我再也不会忘记精彩瞬间了"/>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <Button
-            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="便笺"
-            />
+            android:text="保存"
+            android:id="@+id/save"/>
         <Button
-            android:id="@+id/diary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="心情日记"
-            />
+            android:text="删除"
+            android:id="@+id/delete"/>
         <Button
-            android:id="@+id/do_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="待办事项"
-            />
+            android:text="返回"
+            android:id="@+id/goback"/>
     </LinearLayout>
-
-
 </LinearLayout>
