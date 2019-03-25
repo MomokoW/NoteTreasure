@@ -19,5 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle("记事宝");
+        toolbar.setSubtitle("———记录美好生活");
+        setSupportActionBar(toolbar);
     }
 }
