@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/p1"
     android:orientation="vertical"
     tools:openDrawer="start">
-    <!--重新上传版本-->
+
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"></ListView>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -21,23 +23,31 @@
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="便笺"
-            />
+            android:background="@drawable/btn_shape"
+            android:textColor="@color/DeepSkyBlue"
+            android:text="便笺" />
+
         <Button
             android:id="@+id/diary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="心情日记"
-            />
+            android:background="@drawable/btn_shape"
+            android:textColor="@color/DeepSkyBlue"
+            android:text="心情日记" />
+
         <Button
             android:id="@+id/do_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="待办事项"
-            />
+            android:background="@drawable/btn_shape"
+            android:textColor="@color/DeepSkyBlue"
+            android:text="待办事项" />
     </LinearLayout>
 
 
