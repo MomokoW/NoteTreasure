@@ -3,13 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/p3">
+    android:background="@drawable/p5">
 
-    <ImageView
-        android:id="@+id/d_img"
-        android:layout_width="300dp"
-        android:layout_height="500dp"
-        android:visibility="gone"/>
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -27,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:textColor="@color/DeepSkyBlue"
+            android:background="@drawable/btn_shape_memo"
+            android:textColor="@color/white"
             android:text="保存"
             android:id="@+id/save"/>
         <Button
@@ -36,8 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:textColor="@color/DeepSkyBlue"
+            android:background="@drawable/btn_shape_memo"
+            android:textColor="@color/white"
             android:text="删除"
             android:id="@+id/delete"/>
         <Button
@@ -45,8 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:background="@drawable/btn_shape"
-            android:textColor="@color/DeepSkyBlue"
+            android:background="@drawable/btn_shape_memo"
+            android:textColor="@color/white"
             android:text="返回"
             android:id="@+id/goback"/>
     </LinearLayout>

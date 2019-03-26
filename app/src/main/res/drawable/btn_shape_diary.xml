@@ -4,10 +4,10 @@
     <item android:state_pressed="false">
         <shape>
             <!-- 填充的颜色 -->
-            <solid android:color="#75c233" />
+            <solid android:color="@color/LightSkyBlue" />
             <!--设置渐变-->
-            <gradient android:startColor="#75c233"
-                android:endColor="#b0df87"
+            <gradient android:startColor="@color/LightSkyBlue"
+                android:endColor="@color/DeepSkyBlue"
                 android:angle="180"/>
             <!-- android:radius 弧形的半径 -->
             <!-- 设置按钮的四个角为弧形 -->
@@ -25,10 +25,10 @@
     <item android:state_pressed="true">
         <shape>
             <!-- 填充的颜色 -->
-            <solid android:color="#b0df87" />
+            <solid android:color="@color/DeepSkyBlue" />
             <!--设置渐变-->
-            <gradient android:startColor="#b0df87"
-                android:endColor="#75c233"
+            <gradient android:startColor="@color/DeepSkyBlue"
+                android:endColor="@color/LightSkyBlue"
                 android:angle="180"/>
             <!-- android:radius 弧形的半径 -->
             <!-- 设置按钮的四个角为弧形 -->
