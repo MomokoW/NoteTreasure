@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -30,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //实现添加心情日记按钮跳转事件
-    public void addDiary(View v){
+    //实现添加心情涂鸦按钮跳转事件
+    public void addGraffiti(View v){
         //参数1上下文，参数2跳转Activity的字节码
-        Intent intent = new Intent(getApplicationContext(),DiaryActivity.class);
+        Intent intent = new Intent(getApplicationContext(),GraffitiActivity.class);
         startActivity(intent);
     }
 

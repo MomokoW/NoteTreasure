@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MemoActivity" />
-        <activity android:name=".DiaryActivity" />
+        <activity android:name=".GraffitiActivity" />
         <activity android:name=".DoListActivity"></activity>
     </application>
 

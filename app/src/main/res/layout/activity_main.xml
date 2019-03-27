@@ -57,8 +57,8 @@
             android:layout_weight="1"
             android:background="@drawable/btn_shape"
             android:textColor="@color/white"
-            android:text="心情日记"
-            android:onClick="addDiary"/>
+            android:text="心情涂鸦"
+            android:onClick="addGraffiti"/>
 
         <Button
             android:id="@+id/do_list"
