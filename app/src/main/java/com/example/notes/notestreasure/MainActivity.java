@@ -7,6 +7,7 @@ import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -20,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
+
+        //创建数据库
+        NotesDB notesDB = new NotesDB(this,"notes.db",null,1);
+        notesDB.getWritableDatabase();
+        Toast.makeText(this,"创建数据库成功",Toast.LENGTH_LONG).show();
 
     }
 
