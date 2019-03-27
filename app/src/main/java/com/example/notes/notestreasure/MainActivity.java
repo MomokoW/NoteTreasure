@@ -1,6 +1,7 @@
 package com.example.notes.notestreasure;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("记事宝");
         toolbar.setSubtitle("———记录美好生活");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
 
     }

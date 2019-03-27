@@ -12,8 +12,19 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#75c233"
+
         />
+
+    <!--搜索框-->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="搜索标签或内容"
+        android:layout_gravity="top">
+    </SearchView>
 
     <ListView
         android:id="@+id/list"
