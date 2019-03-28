@@ -4,9 +4,11 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,17 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo);
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(getTime());
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        setSupportActionBar(toolbar);
+        initView();
+    }
+
+    //初始化按钮响应
+    public void initView()
+    {
         //初始化按钮
         saveBtn = (Button)findViewById(R.id.save);
         deleteBtn = (Button)findViewById(R.id.delete);
@@ -43,19 +56,18 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
 
         //创建数据库对象
         dbWriter = getDataBase();
-
-
     }
-
     //响应按钮事件
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.save:
                 addNotes();
+                finish();
                 break;
             case R.id.delete:
                 deleteNotes();
+                finish();
                 break;
             case R.id.goback:
                 dbWriter.close();
