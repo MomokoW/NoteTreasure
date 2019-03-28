@@ -40,8 +40,8 @@ public class MemoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        layout = (LinearLayout) inflater.inflate(R.layout.activity_memo,null);
-        TextView contenttv = (TextView) layout.findViewById(R.id.ettext);
+        layout = (LinearLayout) inflater.inflate(R.layout.activity_memo_to_show,null);
+        TextView contenttv = (TextView) layout.findViewById(R.id.list_content);
         TextView timetv =(TextView) layout.findViewById(R.id.time);
         cursor.moveToPosition(position);
         String content = cursor.getString(cursor.getColumnIndex("content"));

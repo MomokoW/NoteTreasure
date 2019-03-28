@@ -89,6 +89,10 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
     //添加便笺数据
     public void addNotes() {
         ContentValues cv = new ContentValues();
+        /*
+        判断数据库中是否有同样时间的Note，如果有，则是后来点击进入查看的，保存无效，直接查看时间
+        待修改
+         */
         cv.put(NotesDB.CONTENT,ettext.getText().toString());
         cv.put(NotesDB.TAG,tag);
         cv.put(NotesDB.TIME,getTime());
