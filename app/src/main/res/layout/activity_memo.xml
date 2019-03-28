@@ -42,7 +42,17 @@
             android:layout_weight="1"
             android:background="@drawable/btn_shape_memo"
             android:textColor="@color/white"
+            android:text="添加标签"
+            android:id="@+id/tag"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@drawable/btn_shape_memo"
+            android:textColor="@color/white"
             android:text="返回"
             android:id="@+id/goback"/>
+
     </LinearLayout>
 </LinearLayout>
