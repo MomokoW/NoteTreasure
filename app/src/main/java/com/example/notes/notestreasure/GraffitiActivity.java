@@ -1,10 +1,14 @@
 package com.example.notes.notestreasure;
 
+import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.Image;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -15,6 +19,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.*;
+import java.text.*;
 
 public class GraffitiActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -25,6 +31,11 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
     private int startX;
     private int startY;
     private Paint paint;
+    NotesDB notesDB;
+    private SQLiteDatabase dbWriter;
+    final String items[] = {"红色","蓝色","绿色","灰色","黄色","黑色"};
+    private String tag = "红色";
+    private String PNmae;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +91,49 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
         bitmap = null;
         iv.setImageBitmap(null);
     }
+    public void Color(View view)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //设置标题
+        builder.setTitle("选择颜色");
+        //设置图标
+        builder.setIcon(R.mipmap.icon_launcher);
+        //设置单选按钮
+        builder.setSingleChoiceItems(items,0, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //取出选择的条目
+                String item = items[which];
+                tag = item;
+                switch(tag){
+                    case "红色":
+                        paint.setColor(Color.RED);
+                        break;
+                    case "蓝色":
+                        paint.setColor(Color.BLUE);
+                        break;
+                    case "绿色":
+                        paint.setColor(Color.GREEN);
+                        break;
+                    case "灰色":
+                        paint.setColor(Color.GRAY);
+                        break;
+                    case "黄色":
+                        paint.setColor(Color.YELLOW);
+                        break;
+                    case "黑色":
+                        paint.setColor(Color.BLACK);
+                        break;
+                     default:break;
+                }
+                //关闭对话框
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+
+    }
+
     //将当前绘制的图形保存到文件
     public void save(View view){
         if(bitmap==null){
@@ -87,7 +141,12 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
             return ;
         }
         //创建一个文件对象，为了防止重名，用事件戳，命名
-        File file = new File(getFilesDir(),"pic"+System.currentTimeMillis()+".jpg");
+        PNmae = "pic"+System.currentTimeMillis()+".jpg";
+        File file = new File(getFilesDir(),PNmae);
+
+       // ContentValues cv = new ContentValues();
+       // cv.put(NotesDB.URL_NAME,PNmae);
+
         FileOutputStream stream = null;
         try {
             stream = new FileOutputStream(file);
@@ -95,6 +154,7 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
             boolean compress = bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
             if(compress){
                 Toast.makeText(this,"保存成功"+file.getAbsolutePath(),Toast.LENGTH_SHORT).show();
+                //dbWriter.insert(NotesDB.TABLE_URL,file.getAbsolutePath(),cv);
             }else{
                 Toast.makeText(this,"保存失败"+file.getAbsolutePath(),Toast.LENGTH_SHORT).show();
             }

@@ -21,12 +21,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="save"
+            android:background="@drawable/btn_shape_graffiti"
+            android:textColor="@color/white"
             android:text="保存"
             android:id="@+id/save"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="Color"
+            android:background="@drawable/btn_shape_graffiti"
+            android:textColor="@color/white"
+            android:text="改变颜色" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_shape_graffiti"
+            android:textColor="@color/white"
             android:text="删除"
             android:onClick="clear"
             android:id="@+id/delete"/>
