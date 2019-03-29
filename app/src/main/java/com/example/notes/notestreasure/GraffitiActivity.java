@@ -44,6 +44,11 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
         iv = (ImageView) findViewById(R.id.iv);
         //给ImageView设置触摸事件监听
         iv.setOnTouchListener(this);
+        //创建一个画笔对象
+        paint = new Paint();
+        //创建数据库
+        notesDB = new NotesDB(this,"notes.db",null,1);
+        dbWriter= notesDB.getWritableDatabase();
     }
 
     @Override
@@ -60,10 +65,9 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
                     canvas = new Canvas(bitmap);
                     //设置画布背景色为白色
                     canvas.drawColor(Color.WHITE);
-                    //创建一个画笔对象
-                    paint = new Paint();
+
                     //设置画笔的颜色为红色，线条粗细为5磅
-                    paint.setColor(Color.RED);
+                    //paint.setColor(Color.RED);
                     paint.setStrokeWidth(5);
                 }
                 //记录手指按下时的屏幕坐标
@@ -144,8 +148,8 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
         PNmae = "pic"+System.currentTimeMillis()+".jpg";
         File file = new File(getFilesDir(),PNmae);
 
-       // ContentValues cv = new ContentValues();
-       // cv.put(NotesDB.URL_NAME,PNmae);
+        ContentValues cv = new ContentValues();
+
 
         FileOutputStream stream = null;
         try {
@@ -154,7 +158,9 @@ public class GraffitiActivity extends AppCompatActivity implements View.OnTouchL
             boolean compress = bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
             if(compress){
                 Toast.makeText(this,"保存成功"+file.getAbsolutePath(),Toast.LENGTH_SHORT).show();
-                //dbWriter.insert(NotesDB.TABLE_URL,file.getAbsolutePath(),cv);
+                cv.put(NotesDB.URL_NAME,PNmae);
+                cv.put(NotesDB.URL,file.getAbsolutePath());
+                dbWriter.insert(NotesDB.TABLE_URL,null,cv);
             }else{
                 Toast.makeText(this,"保存失败"+file.getAbsolutePath(),Toast.LENGTH_SHORT).show();
             }

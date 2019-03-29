@@ -27,7 +27,8 @@ public class NotesDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + TAG + " VARCHAR(20) NOT NULL," +CONTENT + " TEXT NOT NULL," + TIME +" TEXT NOT NULL)");
-        db.execSQL("CREATE TABLE TABLE_URL(URL TEXT NOT NULL,URL_NAME TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE "+ TABLE_URL + "(" + URL + " TEXT NOT NULL," + URL_NAME + " TEXT NOT NULL)");
+
     }
 
     @Override
