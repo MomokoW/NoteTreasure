@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private Button addGra;
     private Button addDoList;
     private Intent intent;
-
+    private Cursor cursor;
     private MemoAdapter adapter;
     private NotesDB notesDB;
     private SQLiteDatabase dbReader;
@@ -50,6 +51,25 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         notesDB = new NotesDB(this,"notes.db",null,1);
         dbReader = notesDB.getWritableDatabase();
 
+        //设置ListView上Item的点击事件
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                cursor.moveToPosition(position);    //获取到数据库中当前一行
+                Intent i = new Intent(getApplicationContext(),MemoModify.class);
+                //传递当前行的数据
+                i.putExtra(NotesDB.ID,
+                        cursor.getInt(cursor.getColumnIndex(NotesDB.ID)));
+                i.putExtra(NotesDB.CONTENT,
+                        cursor.getString(cursor.getColumnIndex(NotesDB.CONTENT)));
+                i.putExtra(NotesDB.TAG,
+                        cursor.getString(cursor.getColumnIndex(NotesDB.TAG)));
+                i.putExtra(NotesDB.TIME,
+                        cursor.getString(cursor.getColumnIndex(NotesDB.TIME)));
+                startActivity(i);
+            }
+        });
+
 
 
     }
@@ -70,7 +90,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     }
 
     public void selectDB(){
-        Cursor cursor =dbReader.query(NotesDB.TABLE_NAME,null,null,
+        cursor =dbReader.query(NotesDB.TABLE_NAME,null,null,
                 null,null,null,null);
         adapter = new MemoAdapter(this,cursor);
         lv.setAdapter(adapter);

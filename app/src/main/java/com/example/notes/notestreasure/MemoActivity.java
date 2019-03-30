@@ -53,7 +53,7 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
     private String content = "";
     private Button saveBtn,voiceBtn,backBtn,addTag;
     private EditText ettext;
-    NotesDB notesDB;
+    private NotesDB notesDB;
     private String DateNow;
     private String timeNow;
     private SQLiteDatabase dbWriter;
@@ -226,6 +226,7 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
                 //取出选择的条目
                 String item = items[which];
                 tag = item;
+                addTag.setText(tag);
                 //关闭对话框
                 dialog.dismiss();
             }
