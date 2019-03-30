@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -24,23 +25,30 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
     private Button saveBtn,deleteBtn,backBtn,addTag;
     private EditText ettext;
     NotesDB notesDB;
+    private String DateNow;
+    private String timeNow;
     private SQLiteDatabase dbWriter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo);
-        //获取兼容低版本的ActionBar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(getTime());
-        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
-        setSupportActionBar(toolbar);
+        getTime();
         initView();
     }
 
     //初始化按钮响应
     public void initView()
     {
+        //初始化导航栏和时间
+        //获取兼容低版本的ActionBar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("编辑便笺");
+        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+        setSupportActionBar(toolbar);
+        TextView tv = (TextView) findViewById(R.id.showtime);
+        tv.setText(timeNow);
+
         //初始化按钮
         saveBtn = (Button)findViewById(R.id.save);
         deleteBtn = (Button)findViewById(R.id.delete);
@@ -95,17 +103,19 @@ public class MemoActivity extends AppCompatActivity implements View.OnClickListe
          */
         cv.put(NotesDB.CONTENT,ettext.getText().toString());
         cv.put(NotesDB.TAG,tag);
-        cv.put(NotesDB.TIME,getTime());
+        cv.put(NotesDB.TIME,DateNow);
         dbWriter.insert(NotesDB.TABLE_NAME,null,cv);
         Toast.makeText(getApplicationContext(),"添加便笺成功!",Toast.LENGTH_LONG).show();
     }
 
     //获取创建时间
     private String getTime() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
         Date date = new Date();
-        String str = format.format(date);
-        return str;
+        DateNow = format1.format(date);
+        timeNow = DateNow.substring(12);
+        return DateNow;
+
     }
 
     //删除当前便笺

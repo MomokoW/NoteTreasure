@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_shape"
             android:textColor="@color/white"
-            android:text="便笺" />
+            android:text="新建便笺" />
 
         <Button
             android:id="@+id/diary"

@@ -21,7 +21,7 @@
         <activity android:name=".MemoActivity" />
         <activity android:name=".GraffitiActivity" />
         <activity android:name=".DoListActivity" />
-        <activity android:name=".MemoToShow"></activity>
+
     </application>
 
 </manifest>
