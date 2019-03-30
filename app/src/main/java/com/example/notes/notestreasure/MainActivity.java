@@ -5,12 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     private ListView lv;
@@ -27,6 +26,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initView();
+
+    }
+    //初始化绑定事件
+    public void initView()
+    {
         //获取兼容低版本的ActionBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("记事宝");
@@ -34,12 +39,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
         toolbar.setSubtitleTextColor(Color.parseColor("#FFFFFF"));
         setSupportActionBar(toolbar);
-        initView();
-
-    }
-    //初始化绑定事件
-    public void initView()
-    {
         lv = (ListView) findViewById(R.id.list);
         addNotes = (Button) findViewById(R.id.memo);
         addDoList = (Button) findViewById(R.id.do_list);
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         notesDB = new NotesDB(this,"notes.db",null,1);
         dbReader = notesDB.getWritableDatabase();
 
-        Toast.makeText(this,"创建数据库成功",Toast.LENGTH_LONG).show();
+
 
     }
     @Override

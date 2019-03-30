@@ -67,9 +67,11 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:background="@drawable/btn_shape_memo"
+            android:drawableLeft="@mipmap/ic_voice"
             android:textColor="@color/white"
-            android:text="删除"
-            android:id="@+id/delete"/>
+            android:text="语音"
+            android:id="@+id/voice"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
