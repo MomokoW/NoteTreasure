@@ -43,6 +43,7 @@ public class MemoModify extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_memo_modify);
         initView();
     }
+    //初始化界面
 
     public void initView() {
         //获取兼容低版本的ActionBar
